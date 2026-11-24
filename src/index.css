@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ice text-navy-deep font-body antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c3d2e8;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94aacd;
+}
+
+@layer components {
+  .container-app {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-slate-100;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-royal disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-royal text-white hover:bg-navy shadow-sm hover:shadow-md px-5 py-2.5;
+  }
+  .btn-cyan {
+    @apply btn bg-accent-cyan text-navy-deep hover:bg-accent-cyanDark hover:text-white shadow-sm hover:shadow-md px-5 py-2.5;
+  }
+  .btn-outline {
+    @apply btn border-2 border-navy/20 text-navy hover:border-royal hover:text-royal bg-white px-5 py-2.5;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:text-royal hover:bg-royal/5 px-3 py-2;
+  }
+  .btn-danger {
+    @apply btn bg-risk-high text-white hover:bg-red-700 shadow-sm px-5 py-2.5;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-navy-deep placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-royal/30 focus:border-royal transition;
+  }
+  .label {
+    @apply block text-sm font-semibold text-navy-deep mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.4s ease-out both;
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-soft {
+  animation: pulseSoft 2s ease-in-out infinite;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
